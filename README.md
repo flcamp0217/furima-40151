@@ -4,11 +4,14 @@
 |Column                     |Type             |Options                          |
 |---------------------------|-----------------|---------------------------------|
 |nickname                   |string           |null : false                     |
-|username                   |text             |null : false                     |
-|birthday                   |text             |null : false                     |
+|email                      |string           |null : false , unique : true     |
+|password                   |string           |null : false                     |
+|kanji_name                 |string           |null : false                     |
+|kana_name                  |string           |null : false                     |
+|date                       |string           |null : false                     |
 ### Association
-- has_many : item
-- has_many : purchase
+- has_many : items
+- has_many : purchases
 - belongs_to : shipping_info
 
 ##Items テーブル
@@ -16,12 +19,11 @@
 |---------------------------|-----------------|---------------------------------|
 |item_name                  |string           |null : false                     |
 |item_show                  |text             |null : false                     |
-|explanation                |string           |null : false                     |
-|category                   |string           |null : false                     |
-|quality                    |string           |null : false                     |
-|postage                    |string           |null : false                     |
-|shipping_area              |text             |null : false                     |
-|delivery_time              |integer          |null : false                     |
+|category_id                |string           |null : false                     |
+|quality_id                 |string           |null : false                     |
+|postage_id                 |string           |null : false                     |
+|shipping_area_id           |string           |null : false                     |
+|delivery_time_id           |string           |null : false                     |
 |price                      |integer          |null : false                     |
 |user                       |references       |null : false , foreign_key: true |
 ### Association
@@ -32,10 +34,6 @@
 ##Purchases テーブル
 |Column                     |Type             |Options                          |
 |---------------------------|-----------------|---------------------------------|
-|address                    |text             |null : false                     |
-|phone                      |integer          |null :                           |
-|quantity                   |integer          |null : false                     |
-|purchase_price             |integer          |null : false                     |
 |user                       |references       |null : false , foreign_key: true |
 |item                       |references       |null : false , foreign_key: true |
 ### Association
@@ -46,11 +44,14 @@
 ##Shipping_infos テーブル
 |Column                     |Type             |Options                          |
 |---------------------------|-----------------|---------------------------------|
-|shipping_address           |text             |null : false                     |
-|user                       |references       |null : false , foreign_key: true |
-|item                       |references       |null : false , foreign_key: true |
-|purchase                   |references       |null : false , foreign_key: true |
+|postcode                   |integer          |null : false                     |
+|area                       |integer          |null : false                     |
+|city                       |integer          |null : false                     |
+|street_address             |integer          |null : false                     |
+|building                   |integer          |                                 |
+|phone                      |integer          |null : false                     |
+|purchases                  |references       |null : false , foreign_key: true |
 ### Association
-- has_many : item
-- has_many : purchase
+- has_many : items
+- has_many : purchases
 - belongs_to : user
