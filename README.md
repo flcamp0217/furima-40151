@@ -28,7 +28,6 @@
 ### Association
 - belongs_to : user
 - has_one : purchase
-- belongs_to : shipping_info
 
 ##Purchases テーブル
 |Column                     |Type             |Options                          |
