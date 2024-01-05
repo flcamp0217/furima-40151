@@ -37,12 +37,12 @@
 ### Association
 - belongs_to : user
 - belongs_to : item
-- belongs_to : shipping_info
+- has_one : shipping_info
 
 ##Shipping_infos テーブル
 |Column                     |Type             |Options                          |
 |---------------------------|-----------------|---------------------------------|
-|postcode                   |integer          |null : false                     |
+|postcode                 |string          |null : false                     |
 |shipping_area_id           |integer          |null : false                     |
 |city                       |string           |null : false                     |
 |street_address             |string           |null : false                     |
@@ -50,4 +50,4 @@
 |phone                      |string           |null : false                     |
 |purchase                   |references       |null : false , foreign_key: true |
 ### Association
-- belongs_to : purchases
+- belongs_to : purchase
