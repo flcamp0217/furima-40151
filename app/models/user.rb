@@ -1,17 +1,16 @@
 class User < ApplicationRecord
   validates :nickname, presence: true
-  validates :kanji_name, presence: true
-  validates :kana_name, presence: true
   validates :birth_day, presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
-# 半角英数字混合での入力が必須であることの実装
-  validate :password_complexity
 
-  def password_complexity
-   return if password.blank? || password =~ /^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$/m
-   errors.add :password, "は半角英数字の組み合わせで、最低6文字以上で入力してください"
+  with_options presence: true do
+    # 半角英数字混合での入力のみ許可する
+    validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9]+\z/, message: "is invalid. Input half-width alphanumeric characters." }
+    # ひらがな、カタカナ、漢字のみ許可する
+    validates :kanji_name, format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "is invalid. Input full-width characters."}
+    # カタカナのみ許可する
+    validates :kana_name, format: {with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters."}
   end
 end
