@@ -1,14 +1,14 @@
 <mxfile host="65bd71144e">
     <diagram id="LyIwyY-two1CCiydGb-U" name="ページ1">
-        <mxGraphModel dx="1934" dy="707" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1503" dy="712" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="18" value="Usersテーブル(ユーザー情報)" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
-                    <mxGeometry x="-80" y="20" width="360" height="160" as="geometry"/>
+                    <mxGeometry x="-80" y="20" width="360" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="19" value="nickname(string型,NOT NULL)&#10;email(string型,NOT NULL,ユニーク規制,自動生成)&#10;encrypted_password(string型,NOT NULL,自動生成)&#10;kanji_name(string型,NOT NULL)&#10;kana_name (string型,NOT NULL)&#10;birth_day(date型,NOT NULL)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=14;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="18" vertex="1">
-                    <mxGeometry y="30" width="360" height="130" as="geometry"/>
+                <mxCell id="19" value="nickname(string型,NOT NULL)&#10;email(string型,NOT NULL,ユニーク規制,自動生成)&#10;password(string型,NOT NULL,自動生成)&#10;encrypted_password(string型,NOT NULL)&#10;last-name(string型,NOT NULL)&#10;first-name(string型,NOT NULL)&#10;last-name-kana(string型,NOT NULL)&#10;first-name-kana(string型,NOT NULL)&#10;birth-date(date型,NOT NULL)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=14;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="18" vertex="1">
+                    <mxGeometry y="30" width="360" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="20" value="Itemsテーブル(商品情報)" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="550" y="30" width="360" height="220" as="geometry"/>
@@ -28,7 +28,7 @@
                 <mxCell id="25" value="postcode(string型,NOT NULL)&#10;shipping_area_id(integer型,NOT NULL)&#10;city(string型,NOT NULL)&#10;street_address(string型,NOT NULL)&#10;building(string型)&#10;phone(string型,NOT NULL)&#10;Purchase(references型,NOT NULL,外部キー)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=14;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="24" vertex="1">
                     <mxGeometry y="30" width="360" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" style="edgeStyle=none;html=1;entryX=-0.006;entryY=0.384;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="19" edge="1" target="21">
+                <mxCell id="28" style="edgeStyle=none;html=1;entryX=-0.006;entryY=0.384;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="19" target="21" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="540" y="130" as="targetPoint"/>
                     </mxGeometry>
