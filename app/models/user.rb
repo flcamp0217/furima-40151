@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   validates :nickname, presence: true
   validates :birth_date, presence: true
-  validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: "は半角英数字混在で入力してください" }
+  validates :password, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/, message: 'は半角英数字混在で入力してください' }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

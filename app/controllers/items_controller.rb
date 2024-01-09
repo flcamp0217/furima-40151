@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:id])
   end
 
   def create
