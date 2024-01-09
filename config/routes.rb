@@ -1,6 +1,5 @@
-#まえのやつ！
-
 Rails.application.routes.draw do
-  root to: "items#index" #(ルートにアクセスするとindexアクションに行く)
+  devise_for :users #(デバイスに必要なアクションが全部入ってる！)
+  root to: 'items#index' #(ルートにアクセスするとindexアクションに行く)
   resources :items 
 end
