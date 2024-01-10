@@ -1,4 +1,4 @@
-class Genre < ActiveHash::Base
+class Quality < ActiveHash::Base
   self.data = [
     { id: 1, quality: '---' },
     { id: 2, quality: '新品・未使用' },

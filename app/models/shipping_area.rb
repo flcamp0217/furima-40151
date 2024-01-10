@@ -1,4 +1,4 @@
-class Genre < ActiveHash::Base
+class ShippingArea < ActiveHash::Base
   self.data = [
     { id: 1, shipping_area: '---' }, { id: 2, shipping_area: '北海道' }, { id: 3, shipping_area: '青森県' },
     { id: 4, shipping_area: '岩手県' }, { id: 5, shipping_area: '宮城県' }, { id: 6, shipping_area: '秋田県' },

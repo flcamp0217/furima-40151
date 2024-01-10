@@ -1,4 +1,4 @@
-class Genre < ActiveHash::Base
+class Postage < ActiveHash::Base
   self.data = [
     { id: 1, postage: '---' },
     { id: 2, postage: '着払い(購入者負担)' },
