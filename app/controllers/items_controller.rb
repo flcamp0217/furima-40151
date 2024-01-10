@@ -26,8 +26,6 @@ class ItemsController < ApplicationController
     .merge(user_id: current_user.id)
   end
 
-  end
-  
   def move_to_sessions_new
     return if user_signed_in?
 
@@ -39,6 +37,4 @@ class ItemsController < ApplicationController
 
     redirect_to action: :index
   end
-
-  
 end
