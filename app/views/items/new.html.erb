@@ -72,12 +72,12 @@
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:shipping_area_id, Shipping_area.all, :id, :shipping_area, {}, {class:"select-box", id:"item-prefecture"}) %>
+        <%= f.collection_select(:shipping_area_id, ShippingArea.all, :id, :shipping_area, {}, {class:"select-box", id:"item-prefecture"}) %>
         <div class="weight-bold-text" >
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:delivery_time_id, Delivery_time.all, :id, :delivery_time, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.collection_select(:delivery_time_id, DeliveryTime.all, :id, :delivery_time, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
@@ -108,7 +108,6 @@
             <span id='profit'></span>円
           </span>
         </div>
-        <script src="new.js"></script>
       </div>
     </div>
     <%# /販売価格 %>
