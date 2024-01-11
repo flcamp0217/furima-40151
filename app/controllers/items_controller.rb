@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :move_to_sessions_new, only: [:new]
 
   def index
-   @items = Item.all
+   #@items = Item.all
   end
 
   def new
@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-   @item = Item.create(item_params)
+   @item = Item.new(item_params)
    if @item.save
     redirect_to '/'
    else
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :item_name, :item_show, :category_id, :quality_id, :postage_id, :shipping_area_id, :delivery_time_id, :price, :user)
+    params.require(:item).permit(:image, :item_name, :item_show, :category_id, :quality_id, :postage_id, :shipping_area_id, :delivery_time_id, :price)
     .merge(user_id: current_user.id)
   end
 
