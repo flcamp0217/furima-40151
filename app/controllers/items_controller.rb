@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_sessions_new, only: [:new]
+  before_action :move_to_sessions_new, only: [:new, :edit, :destroy]
   before_action :params_find, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit]
   def index
@@ -23,12 +23,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if user_signed_in? && current_user.id == @item.user_id
+    if current_user.id == @item.user_id
       @item.destroy
-      redirect_to root_path
-    else
-      redirect_to action: :new
     end
+    redirect_to root_path
   end
 
   def show
@@ -57,12 +55,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    @item = Item.find(params[:id])
-    if user_signed_in? && current_user.id == @item.user_id
-      nil
-    elsif user_signed_in?
-      redirect_to action: :index
-    else
+    if current_user.id != @item.user_id
       redirect_to action: :index
     end
   end
