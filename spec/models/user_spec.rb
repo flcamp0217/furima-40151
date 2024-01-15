@@ -16,14 +16,12 @@ RSpec.describe User, type: :model do
         @user.nickname = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Nickname can't be blank")
-        # nicknameが空では登録できないテストコードを記述します
       end
       it 'emailが空では登録できない' do
         @user.email = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
-      # ここから自分！
       it '重複したメールアドレスは登録できない' do
         @user.save
         another_user = FactoryBot.build(:user)

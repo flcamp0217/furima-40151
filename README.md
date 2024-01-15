@@ -28,8 +28,8 @@
 |price                      |integer          |null : false                     |
 |user                       |references       |null : false , foreign_key: true |
 ### Association
-- belongs_to : user
-- has_one : purchase
+- belongs_to: user
+- has_one: purchase
 
 ##Purchases テーブル
 |Column                     |Type             |Options                          |
@@ -37,9 +37,9 @@
 |user                       |references       |null : false , foreign_key: true |
 |item                       |references       |null : false , foreign_key: true |
 ### Association
-- belongs_to : user
-- belongs_to : item
-- has_one : shipping_info
+- belongs_to: user
+- belongs_to: item
+- has_one :shipping_info
 
 ##Shipping_infos テーブル
 |Column                     |Type             |Options                          |
@@ -52,4 +52,4 @@
 |phone                      |string           |null : false                     |
 |purchase                   |references       |null : false , foreign_key: true |
 ### Association
-- belongs_to : purchase
+- belongs_to: purchase

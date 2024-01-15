@@ -1,22 +1,22 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :user, :item, :postcode, :shipping_area_id, :city, :street_address, :building, :phone
+  attr_accessor :user_id, :item_id, :postcode, :shipping_area_id, :city, :street_address, :building, :phone
 
   with_options presence: true do
     validates :user_id
     validates :item_id
-    validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :shipping_area_id, numericality: {other_than: 1, message: "can't be blank"}
-    validates :city, numericality: { only_integer: true }
-    validates :street_address, numericality: { only_integer: true }
-    validates :phone, format: {with: /\A\d+\z/, message: 'is invalid'}
+    validates :postcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'is invalid. Include hyphen(-)' }
+    validates :shipping_area_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :city
+    validates :street_address
+    validates :phone, format: { with: /\A\d+\z/, message: 'is invalid' }
   end
-  validates :building, numericality: {only_integer: true}
+  validates :city, :street_address, :building, numericality: { only_integer: false }
 end
 
 def save
+  purchase = Purchase.create(user_id:, item_id:)
 
-  purchase = Purchase.create(user: user_id, item: item_id)
-
-  shipping_info.create(postcode: postcode, shipping_area_id: shipping_area_id, city: city, street_address: street_address, phone: phone, building: building, purchase_id: purchase.id)
+  shipping_info.create(postcode:, shipping_area_id:, city:, street_address:,
+                       phone:, building:, purchase_id: purchase.id)
 end
