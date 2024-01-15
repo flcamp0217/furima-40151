@@ -9,14 +9,13 @@ class Order
     validates :shipping_area_id, numericality: { other_than: 1, message: "can't be blank" }
     validates :city
     validates :street_address
-    validates :phone, format: { with: /\A\d+\z/, message: 'is invalid' }
+    validates :phone, length: { in: 10..11 }, format: { with: /\A\d+\z/, message: 'is invalid' }
   end
-  validates :city, :street_address, :building, numericality: { only_integer: false }
 end
 
 def save
-  purchase = Purchase.create(user_id:, item_id:)
+  purchase = Purchase.create(user_id:user_id, item_id:item_id)
 
-  shipping_info.create(postcode:, shipping_area_id:, city:, street_address:,
-                       phone:, building:, purchase_id: purchase.id)
+  shipping_info.create(postcode: postcode, shipping_area_id: shipping_area_id, city: city, street_address: street_address,
+  phone: phone, building: building, purchase_id: purchase.id)
 end
