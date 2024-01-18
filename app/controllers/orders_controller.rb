@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     if @order.valid?
       pay_item
       @order.save
-      redirect_to items_path
+      redirect_to root_path
     else
       @item = Item.find(params[:item_id])
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
@@ -39,9 +39,9 @@ class OrdersController < ApplicationController
   end
 
   def move_to_top
-    @item = Item.includes(:user).find(params[:item_id])
-    return unless current_user.id == @item.user_id
-
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user.id || @item.purchase.present?
     redirect_to root_path
+    end
   end
 end
