@@ -8,7 +8,7 @@ RSpec.describe Order, type: :model do
       @order = FactoryBot.build(:order, user_id: user.id, item_id: item.id)
     end
     context '内容に問題ない場合' do
-      it 'すべての値が正しく入力されていれば保存できること' do
+      it 'すべての値とtokenが正しく入力されていれば保存できること' do
         expect(@order).to be_valid
       end
       it 'buildingは空でも保存できること' do
@@ -82,6 +82,11 @@ RSpec.describe Order, type: :model do
         @order.item_id = nil
         @order.valid?
         expect(@order.errors.full_messages).to include("Item can't be blank")
+      end
+      it 'tokenが空では登録できないこと' do
+        @order.token = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
       end
     end
   end

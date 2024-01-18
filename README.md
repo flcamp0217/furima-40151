@@ -44,7 +44,7 @@
 ##Shipping_infos テーブル
 |Column                     |Type             |Options                          |
 |---------------------------|-----------------|---------------------------------|
-|postcode                 |string          |null : false                     |
+|postcode                   |string           |null : false                     |
 |shipping_area_id           |integer          |null : false                     |
 |city                       |string           |null : false                     |
 |street_address             |string           |null : false                     |
