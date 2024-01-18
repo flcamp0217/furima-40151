@@ -1,6 +1,6 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postcode, :shipping_area_id, :city, :street_address, :building, :phone, :token
+  attr_accessor :token, :user_id, :item_id, :postcode, :shipping_area_id, :city, :street_address, :building, :phone
 
   with_options presence: true do
     validates :user_id
@@ -10,13 +10,13 @@ class Order
     validates :city
     validates :street_address
     validates :phone, length: { in: 10..11 }, format: { with: /\A\d+\z/, message: 'is invalid' }
-    validates :token, presence: true
+    validates :token
   end
-end
 
-def save
-  purchase = Purchase.create(user_id:user_id, item_id:item_id)
+  def save
+    purchase = Purchase.create(user_id:user_id, item_id:item_id)
 
-  shipping_info.create(postcode: postcode, shipping_area_id: shipping_area_id, city: city, street_address: street_address,
-  phone: phone, building: building, purchase_id: purchase.id)
+    ShippingInfo.create(postcode: postcode, shipping_area_id: shipping_area_id, city: city, street_address: street_address,
+    phone: phone, building: building, purchase_id: purchase.id)
+  end
 end
